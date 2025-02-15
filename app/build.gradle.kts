@@ -1,11 +1,12 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    kotlin("plugin.serialization") version "2.1.10"
 }
 
 android {
     namespace = "com.geeks.hw43"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.geeks.hw43"
@@ -33,9 +34,20 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
+
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
+    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+    implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
